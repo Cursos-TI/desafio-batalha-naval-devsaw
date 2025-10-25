@@ -1,39 +1,43 @@
-//Criei desafio batalha naval novato
+//Criei desafio batalha naval aventureiro
 #include <stdio.h>
-
-// Desafio Batalha Naval - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de Batalha Naval.
-// Siga os comentários para implementar cada parte do desafio.
 
 int main() {
     int tabuleiro[10][10] = {0};
     int tamanhoNavio = 3;
+    int navio[3] = {3, 3, 3};
 
-    int navio1[3] = {3, 3, 3};
-    int navio2[3] = {3, 3, 3};
-
-    int linhaInicialNavio1 = 2;
-    int colunaInicialNavio1 = 4;
-
-    int linhaInicialNavio2 = 6;
-    int colunaInicialNavio2 = 1;
+    int linhaInicialH = 2, colunaInicialH = 1;
+    int linhaInicialV = 5, colunaInicialV = 7;
+    int linhaInicialD1 = 0, colunaInicialD1 = 0;
+    int linhaInicialD2 = 0, colunaInicialD2 = 9;
 
     for (int i = 0; i < tamanhoNavio; i++) {
-        if (colunaInicialNavio1 + i < 10) {
-            tabuleiro[linhaInicialNavio1][colunaInicialNavio1 + i] = navio1[i];
+        if (colunaInicialH + i < 10 && tabuleiro[linhaInicialH][colunaInicialH + i] == 0) {
+            tabuleiro[linhaInicialH][colunaInicialH + i] = navio[i];
         }
     }
 
-
     for (int i = 0; i < tamanhoNavio; i++) {
-        if (linhaInicialNavio2 + i < 10) {
-            if (tabuleiro[linhaInicialNavio2 + i][colunaInicialNavio2] == 0) {
-                tabuleiro[linhaInicialNavio2 + i][colunaInicialNavio2] = navio2[i];
-            }
+        if (linhaInicialV + i < 10 && tabuleiro[linhaInicialV + i][colunaInicialV] == 0) {
+            tabuleiro[linhaInicialV + i][colunaInicialV] = navio[i];
         }
     }
 
-    printf("BATALHA NAVAL\n\n");
+    for (int i = 0; i < tamanhoNavio; i++) {
+        if (linhaInicialD1 + i < 10 && colunaInicialD1 + i < 10 &&
+            tabuleiro[linhaInicialD1 + i][colunaInicialD1 + i] == 0) {
+            tabuleiro[linhaInicialD1 + i][colunaInicialD1 + i] = navio[i];
+        }
+    }
+
+    for (int i = 0; i < tamanhoNavio; i++) {
+        if (linhaInicialD2 + i < 10 && colunaInicialD2 - i >= 0 &&
+            tabuleiro[linhaInicialD2 + i][colunaInicialD2 - i] == 0) {
+            tabuleiro[linhaInicialD2 + i][colunaInicialD2 - i] = navio[i];
+        }
+    }
+
+    printf("BATALHA NAVAL AVENTUREIRO\n\n");
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
             printf("%d ", tabuleiro[i][j]);
